@@ -13,6 +13,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Printing;
 
 namespace kursach.Pages
 {
@@ -22,6 +23,7 @@ namespace kursach.Pages
         {
             InitializeComponent();
             ListBoxTeachersRefresh();
+            ComboBoxSorting.SelectedIndex = 0;
         }
 
         List<int> idTeachers = new List<int>();
@@ -283,6 +285,21 @@ namespace kursach.Pages
                     }
                 }
             }
+        }
+
+        private void ButtonPrint_Click(object sender, EventArgs e)
+        {
+            //printPreviewDialog1.ShowDialog();
+            if (printDialog1.ShowDialog() == DialogResult.OK)
+                printDocument1.Print();
+        }
+
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            printDocument1.DefaultPageSettings.Margins = new System.Drawing.Printing.Margins(0, 0, 0, 0);
+            var bitmap = new Bitmap(panel1.Width, panel1.Height);
+            panel1.DrawToBitmap(bitmap, new Rectangle(panel1.Location, bitmap.Size));
+            e.Graphics.DrawImage(bitmap, new Point(0, 0));
         }
     }
 }

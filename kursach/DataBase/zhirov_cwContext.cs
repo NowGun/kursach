@@ -27,6 +27,7 @@ namespace kursach.DataBase
         public virtual DbSet<TeachersHasGroup> TeachersHasGroups { get; set; }
         public virtual DbSet<Typelearning> Typelearnings { get; set; }
         public virtual DbSet<Weekday> Weekdays { get; set; }
+        public virtual DbSet<Date> Dates { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -253,10 +254,6 @@ namespace kursach.DataBase
 
                 entity.Property(e => e.GroupsIdgroups).HasColumnName("groups_idgroups");
 
-                entity.Property(e => e.StudentsBirthday)
-                    .HasColumnType("date")
-                    .HasColumnName("students_birthday");
-
                 entity.Property(e => e.StudentsDormitory)
                     .HasMaxLength(5)
                     .HasColumnName("students_dormitory")
@@ -416,8 +413,46 @@ namespace kursach.DataBase
                     .HasColumnName("weekday_name");
             });
 
+            modelBuilder.Entity<Date>(entity =>
+            {
+                entity.HasKey(e => e.IdDate)
+                    .HasName("PRIMARY");
+
+                entity.ToTable("dates");
+
+                entity.HasIndex(e => e.Fulldate, "td_dbdate_idx")
+                    .IsUnique();
+
+                entity.HasIndex(e => new { e.Year, e.Month, e.Day }, "td_ymd_idx")
+                    .IsUnique();
+
+                entity.Property(e => e.IdDate)
+                    .ValueGeneratedNever()
+                    .HasColumnName("idDate");
+
+                entity.Property(e => e.Day).HasColumnName("day");
+
+                entity.Property(e => e.DayOfWeek).HasColumnName("dayOfWeek");
+
+                entity.Property(e => e.Fulldate)
+                    .HasColumnType("date")
+                    .HasColumnName("fulldate");
+
+                entity.Property(e => e.Month).HasColumnName("month");
+
+                entity.Property(e => e.Quarter).HasColumnName("quarter");
+
+                entity.Property(e => e.Week).HasColumnName("week");
+
+                entity.Property(e => e.Weekend).HasColumnName("weekend");
+
+                entity.Property(e => e.Year).HasColumnName("year");
+            });
+
             OnModelCreatingPartial(modelBuilder);
         }
+
+
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
