@@ -16,4 +16,13 @@
     <PackageReference Include="unvell.ReoGrid.dll" Version="3.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="NickBuhro.Translit">
+      <HintPath>..\..\ElectroJournalNetFramework\ElectroJournal\dll\NickBuhro.Translit.dll</HintPath>
+    </Reference>
+    <Reference Include="SmsRu">
+      <HintPath>..\..\ElectroJournalNetFramework\ElectroJournal\dll\SmsRu.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
