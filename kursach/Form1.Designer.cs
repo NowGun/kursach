@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.PanelMenu = new System.Windows.Forms.Panel();
+            this.ButtonOP = new System.Windows.Forms.Button();
             this.RadioButtonDiscipline = new System.Windows.Forms.RadioButton();
             this.LabelName = new System.Windows.Forms.Label();
             this.RadioButtonGroups = new System.Windows.Forms.RadioButton();
@@ -42,6 +43,7 @@
             this.TextBoxLogin = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.PanelMenu.SuspendLayout();
             this.PanelLogin.SuspendLayout();
             this.SuspendLayout();
@@ -49,6 +51,7 @@
             // PanelMenu
             // 
             this.PanelMenu.BackColor = System.Drawing.Color.White;
+            this.PanelMenu.Controls.Add(this.ButtonOP);
             this.PanelMenu.Controls.Add(this.RadioButtonDiscipline);
             this.PanelMenu.Controls.Add(this.LabelName);
             this.PanelMenu.Controls.Add(this.RadioButtonGroups);
@@ -59,6 +62,17 @@
             this.PanelMenu.Name = "PanelMenu";
             this.PanelMenu.Size = new System.Drawing.Size(1261, 56);
             this.PanelMenu.TabIndex = 0;
+            // 
+            // ButtonOP
+            // 
+            this.ButtonOP.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonOP.Location = new System.Drawing.Point(618, 13);
+            this.ButtonOP.Name = "ButtonOP";
+            this.ButtonOP.Size = new System.Drawing.Size(173, 34);
+            this.ButtonOP.TabIndex = 6;
+            this.ButtonOP.Text = "О программе";
+            this.ButtonOP.UseVisualStyleBackColor = true;
+            this.ButtonOP.Click += new System.EventHandler(this.ButtonOP_Click);
             // 
             // RadioButtonDiscipline
             // 
@@ -221,6 +235,10 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Введите логин";
             // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "C:\\Users\\nowgu\\Desktop\\help\\index.html";
+            // 
             // Form1
             // 
             this.AcceptButton = this.ButtonLogin;
@@ -231,8 +249,14 @@
             this.Controls.Add(this.PanelLogin);
             this.Controls.Add(this.content);
             this.Controls.Add(this.PanelMenu);
+            this.HelpButton = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.helpProvider1.SetShowHelp(this, true);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Электронный журнал";
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Form1_HelpButtonClicked);
             this.PanelMenu.ResumeLayout(false);
             this.PanelMenu.PerformLayout();
             this.PanelLogin.ResumeLayout(false);
@@ -259,6 +283,7 @@
         private System.Windows.Forms.TextBox TextBoxLogin;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-
+        private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.Button ButtonOP;
     }
 }

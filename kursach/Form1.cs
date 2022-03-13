@@ -137,5 +137,16 @@ namespace kursach
                 }
             }
         }
+
+        private void Form1_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            SendKeys.Send("{F1}");
+        }
+
+        private void ButtonOP_Click(object sender, EventArgs e)
+        {
+            AboutBox1 ab = new AboutBox1();
+            ab.ShowDialog();
+        }
     }
 }
